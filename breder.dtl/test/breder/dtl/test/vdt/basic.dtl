@@ -1,0 +1,12 @@
+html () {
+	body () {
+	    for (int n = 0 ; n < 10 ; n++) {
+            p () { "dddd" }
+		}
+		text (id="username")
+		password (id="password")
+		label (id="error")
+		button (type="button" onclick="login.onclick")
+		text ()
+	}
+}

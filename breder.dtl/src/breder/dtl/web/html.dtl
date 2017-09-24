@@ -1,0 +1,15 @@
+body {
+    int n = 1
+    if (n == 1) {
+        label {"test de label"+(n+1)}
+    }
+    label {"test de label"}
+    label {"test de label"}
+    table {
+        row {
+            col () {
+                textfield (id="username")
+            }
+        }
+    }
+}

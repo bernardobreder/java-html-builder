@@ -1,0 +1,73 @@
+html {
+	body {
+		p { "dddd" }
+		text (id="username")
+		password (id="password")
+		label (id="error")
+		button (type="button" onclick="login.onclick")
+		for (int n = 0 , n < 10 , n++) {
+			if (n == 1) {
+				input (type="text")
+			} else {
+			}
+		}
+	}
+}
+
+method ("login.onclick") {
+    if (!isemail(username.text())) {
+        error.text("usuario invalido")
+    } else if (password.text().trim().length() == 0) {
+        error.text("password invalido")
+    } else {
+        if (ajax.login(username.text(), password.text())) {
+            window.open("resume.do")
+        } else {
+            error.text("usuario ou senha invalida")
+            password.text("")
+        }
+    }
+}
+
+method ("isemail" type=bool) {
+    return(true)
+}
+
+tag ("html") {
+    this.add(this.head)
+    this.add(this.body)
+}
+
+tag ("body") {
+    for (int n = 0 , n < this.children.length , n++) {
+        this.add(this.children.get(n))
+    }
+}
+
+tagdef("input") {
+    this.add("<input type='?'></input>", this.type)
+}
+
+tagdef("textarea") {
+    this.add("<textarea>?</textarea>", this.text)
+}
+
+tagdef("hlayout") {
+    this.add("<table cellpadding='0px' cellspacing='0px'><tr valign='?'>", this.valign)
+    for (int n = 0 , n < this.children.length , n++) {
+        this.add("<td>")
+        this.add(this.children.get(n))
+        this.add("</td>")
+    }
+    this.add("</tr></table")
+}
+
+tagdef("hlayout") {
+    this.add("<table cellpadding='0px' cellspacing='0px' width='100%'>", this.valign)
+    for (int n = 0 , n < this.children.length , n++) {
+        this.add("<tr valign='?'><td width='100%'>")
+        this.add(this.children.get(n))
+        this.add("</tr></td>")
+    }
+    this.add("</table")
+}

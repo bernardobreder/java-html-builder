@@ -1,0 +1,30 @@
+import ("core.vdsl")
+
+local string[] body_children = ["a","p","h1","h2","h3","h4","h5","h6","table","tr","td"]
+local string[] color = ["red","green","blue"]
+local string[] align = ["left","center","right","justify"]
+local string[] input_type = ["text","button","file"]
+
+tagdef ("html") {
+	children {"body", "head"}
+	parent {}
+}
+
+tagdef ("body") {
+	param(name="bgcolor" type=color)
+	children {body_children}
+	parent {"html"}
+}
+
+tagdef ("a") {
+	param(name="href" type=string)
+	children {body_children - "table"}
+}
+
+tagdef ("p") {
+	param(name="align" type=align)
+}
+
+tagdef ("input") {
+	param(name="type" type=input_type)
+}

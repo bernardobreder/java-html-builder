@@ -1,0 +1,14 @@
+package breder.dtl.builder.basic.param.value;
+
+import breder.dtl.builder.DyanmicTagLanguageContext;
+
+public class WebDivValue extends WebArithmeticValue {
+
+	public static Object toString(DyanmicTagLanguageContext context, Object left, Object right) {
+		if (left instanceof Double) {
+			return ((Double) left) / ((Double) right);
+		} else {
+			throw new IllegalArgumentException("div operation is not implemented");
+		}
+	}
+}

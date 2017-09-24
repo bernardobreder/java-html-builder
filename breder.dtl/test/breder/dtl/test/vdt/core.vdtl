@@ -1,0 +1,45 @@
+typedef ("object") { class("core.Object") }
+typedef ("array") { class("core.Array") }
+typedef ("number") { class("core.Number") }
+typedef ("string") { class("core.String") }
+typedef ("boolean") { class("core.Boolean") }
+
+local string[] control = ["for","do","while"]
+
+tagdef ("for") {
+	class("core.ForIterator")
+	param(name="var" type=declare)
+	param(name="test" type=boolean)
+	param(name="next" type=object)
+}
+
+tagdef ("for") {
+	class("core.ForEach")
+	param(name="var" type=declare)
+	param(name="next" type=array)
+}
+
+tagdef ("if") {
+	class("core.If")
+	param(name="test" type=boolean)
+}
+
+tagdef ("else") {
+	class("core.Else")
+	previous("if")
+}
+
+tagdef ("do") {
+	class("core.Do")
+	next("while")
+}
+
+tagdef ("while") {
+	class("core.While")
+	param(name="test" type=boolean)
+}
+
+tagdef ("break") {
+	class("core.Break")
+	parent {control}
+}
